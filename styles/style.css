@@ -1,0 +1,57 @@
+body{
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.todo-container{
+    display: flex;
+    width: 760px;
+    padding-left: 20px;
+    padding-right: 20px;
+    align-items: center;
+    height: 70px;
+    transition-duration: 0.4s;
+    font-size: 25px;
+}
+.todo-container:hover{
+    background-color: rgb(231, 231, 231);
+}
+
+.todo-text{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.delete-button{
+    height: 30px;
+    width: 30px;
+    border: 2px solid grey;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    background-color: white;
+    font-size: 15pt;
+    transition-duration: 0.4s;
+}
+.delete-button:hover{
+    background-color: rgb(255, 121, 121);
+    color: white;
+}
+
+.complete-button{
+    height: 30px;
+    width: 30px;
+    border: 2px solid black;
+    border-radius: 100%;
+    background-color: white;
+}
+.complete-button:hover{
+    border-width: 4px;
+}
