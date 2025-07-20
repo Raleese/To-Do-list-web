@@ -80,3 +80,12 @@ body{
     align-items: center;
     gap: 10px;
 }
+
+.completed{
+    text-decoration: line-through;
+    text-decoration-color: rgb(158, 158, 158);
+    color: rgb(190, 190, 190);
+}
+.orange-button{
+    background-color: rgb(255, 144, 93);
+}

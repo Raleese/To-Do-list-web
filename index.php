@@ -7,31 +7,26 @@
         "enough"
     ];
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do</title>
-</head>
-<body>
-    <h2>TO-DO List</h2>
-    <?php 
+    <?php
+        require 'elements/head.php'; 
         require 'elements/add.php';
+
         foreach ($tasks as $task){
             require 'elements/to_do_box.php';
         }
-        require 'db.php';
+        /*require 'db.php';
+
+        $id = $_GET['id'];
 
         $config = require 'config.php';
+        $db = new Database($config['database']);
+        $query = "SELECT * FROM item WHERE id=?";
+        $items = $db->query($query, [$id])->fetchAll();
 
-        $db = new Database($config);
-        $items = $db->query("SELECT * FROM item")->fetchAll();
         echo "<pre>";
         var_dump($items);
-        echo "</pre>";
+        echo "</pre>";*/
     ?>
+    <script src="functions/buttons.js"></script>
 </body>
 </html>
