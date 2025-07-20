@@ -1,32 +1,34 @@
 <?php
-    $tasks = [
-        "Clean the room",
-        "Take out the trash",
-        "test",
-        "another one",
-        "enough"
-    ];
-?>
-    <?php
-        require 'elements/head.php'; 
-        require 'elements/add.php';
+    require 'elements/head.html.php'; 
+    require 'elements/input.php';
+    require 'db.php';
 
-        foreach ($tasks as $task){
-            require 'elements/to_do_box.php';
+    //$id = $_GET['id'];
+
+    $config = require 'config.php';
+    $db = new Database($config['database']);
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        $text = trim($_POST['text'] ?? '');
+        if ($text !== '') {
+            $db->query('INSERT INTO item (text) VALUES (:text)', ['text' => $_POST['text']]);
         }
-        /*require 'db.php';
+        header("Location: " . $_SERVER['REQUEST_URI']);
+        exit;
+    }
 
-        $id = $_GET['id'];
+    $query = "SELECT * FROM item"; // WHERE id=?";
+    $items = $db->query($query)->fetchAll(); //$items = $db->query($query, [$id])->fetchAll();
 
-        $config = require 'config.php';
-        $db = new Database($config['database']);
-        $query = "SELECT * FROM item WHERE id=?";
-        $items = $db->query($query, [$id])->fetchAll();
+    foreach ($items as $item){
+        $task = $item['text'];
+        require 'elements/to_do_box.php';
+    }
 
-        echo "<pre>";
-        var_dump($items);
-        echo "</pre>";*/
-    ?>
-    <script src="functions/buttons.js"></script>
-</body>
-</html>
+    require 'elements/tail.html.php';
+
+    //echo "<pre>";
+    //var_dump($_POST);
+    //echo "</pre>";
+    //die();
+?>

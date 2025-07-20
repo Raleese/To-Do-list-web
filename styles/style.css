@@ -88,4 +88,5 @@ body{
 }
 .orange-button{
     background-color: rgb(255, 144, 93);
+    border-width: 4px;
 }
