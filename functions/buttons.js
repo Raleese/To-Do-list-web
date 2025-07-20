@@ -1,8 +1,23 @@
 // Complete button
-function setCompleted(button, id){
-    const todoText = button.parentElement.querySelector('.todo-text');
+function setCompleted(id){
+    fetch('', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded', 
+        },
+        body: 'completed_id=' + encodeURIComponent(id)
+    }).then(response=> {
+        if (response.ok){
+            crossText(id);
+        }
+    })
+}
 
-    button.classList.toggle('orange-button')
+function crossText(id){
+    const todoButton = document.getElementById("item-" + id).querySelector('.complete-button');
+    const todoText = document.getElementById("item-" + id).querySelector('.todo-text');
+
+    todoButton.classList.toggle('orange-button')
     todoText.classList.toggle('completed')
 }
 
