@@ -15,13 +15,12 @@
     <title>To-Do</title>
 </head>
 <body>
-    <?php require 'elements/add.php'; ?>
-    <div class="boxes-container">
-        <?php 
-            foreach ($tasks as $task){
-                require 'elements/to_do_box.php';
-            }
-        ?>
-    </div>
+    <h2>TO-DO List</h2>
+    <?php 
+        require 'elements/add.php';
+        foreach ($tasks as $task){
+            require 'elements/to_do_box.php';
+        }
+    ?>
 </body>
 </html>
