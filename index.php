@@ -2,7 +2,9 @@
     $tasks = [
         "Clean the room",
         "Take out the trash",
-        "test"
+        "test",
+        "another one",
+        "enough"
     ];
 ?>
 
@@ -21,6 +23,15 @@
         foreach ($tasks as $task){
             require 'elements/to_do_box.php';
         }
+        require 'db.php';
+
+        $config = require 'config.php';
+
+        $db = new Database($config);
+        $items = $db->query("SELECT * FROM item")->fetchAll();
+        echo "<pre>";
+        var_dump($items);
+        echo "</pre>";
     ?>
 </body>
 </html>
