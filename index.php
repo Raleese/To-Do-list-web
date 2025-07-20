@@ -8,11 +8,17 @@
     $config = require 'config.php';
     $db = new Database($config['database']);
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $text = trim($_POST['text'] ?? '');
-        if ($text !== '') {
+    // ADDING and DELETING
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Delete item if delete_id is set
+        if (!empty($_POST['delete_id'])) {
+            $db->query('DELETE FROM item WHERE id = :id', ['id' => $_POST['delete_id']]);
+        }
+        // Add new item
+        elseif (!empty($_POST['text'])) {
             $db->query('INSERT INTO item (text) VALUES (:text)', ['text' => $_POST['text']]);
         }
+        
         header("Location: " . $_SERVER['REQUEST_URI']);
         exit;
     }
@@ -22,13 +28,9 @@
 
     foreach ($items as $item){
         $task = $item['text'];
+        $id = $item['id'];
         require 'elements/to_do_box.php';
     }
 
     require 'elements/tail.html.php';
-
-    //echo "<pre>";
-    //var_dump($_POST);
-    //echo "</pre>";
-    //die();
 ?>
