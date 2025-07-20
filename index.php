@@ -1,7 +1,8 @@
 <?php
     $tasks = [
         "Clean the room",
-        "Take out the trash"
+        "Take out the trash",
+        "test"
     ];
 ?>
 
@@ -14,11 +15,13 @@
     <title>To-Do</title>
 </head>
 <body>
-    <?php 
-        require 'elements/add.php';
-        foreach ($tasks as $task){
-            require 'elements/to_do_box.php';
-        }
-    ?>
+    <?php require 'elements/add.php'; ?>
+    <div class="boxes-container">
+        <?php 
+            foreach ($tasks as $task){
+                require 'elements/to_do_box.php';
+            }
+        ?>
+    </div>
 </body>
 </html>
