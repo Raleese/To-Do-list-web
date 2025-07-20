@@ -1,17 +1,12 @@
-const completeButtons = document.querySelectorAll('.complete-button');
-
 // Complete button
-completeButtons.forEach(function(button){
-    button.addEventListener('click', function(){
-        const todoText = this.parentElement.querySelector('.todo-text');
+function setCompleted(button, id){
+    const todoText = button.parentElement.querySelector('.todo-text');
 
-        button.classList.toggle('orange-button')
-        todoText.classList.toggle('completed')
-    })
-})
+    button.classList.toggle('orange-button')
+    todoText.classList.toggle('completed')
+}
 
 // Delete button
-
 function deleteItem(id) {
     fetch('', {
         method: 'POST',
