@@ -13,14 +13,6 @@ function setCompleted(id){
     })
 }
 
-function crossText(id){
-    const todoButton = document.getElementById("item-" + id).querySelector('.complete-button');
-    const todoText = document.getElementById("item-" + id).querySelector('.todo-text');
-
-    todoButton.classList.toggle('orange-button')
-    todoText.classList.toggle('completed')
-}
-
 // Delete button
 function deleteItem(id) {
     fetch('', {
@@ -35,4 +27,13 @@ function deleteItem(id) {
             document.getElementById('item-' + id).remove();
         }
     });
+}
+
+// Helper method
+function crossText(id){
+    const todoButton = document.getElementById("item-" + id).querySelector('.complete-button');
+    const todoText = document.getElementById("item-" + id).querySelector('.todo-text');
+
+    todoButton.classList.toggle('orange-button')
+    todoText.classList.toggle('completed')
 }

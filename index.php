@@ -3,8 +3,6 @@
     require 'elements/input.php';
     require 'db.php';
 
-    //$id = $_GET['id'];
-
     $config = require 'config.php';
     $db = new Database($config['database']);
 
@@ -26,8 +24,8 @@
         exit;
     }
 
-    $query = "SELECT * FROM item"; // WHERE id=?";
-    $items = $db->query($query)->fetchAll(); //$items = $db->query($query, [$id])->fetchAll(); ?>
+    $query = "SELECT * FROM item";
+    $items = $db->query($query)->fetchAll(); ?>
 
     <script src="functions/buttons.js"></script>
 

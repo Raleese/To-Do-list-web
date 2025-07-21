@@ -7,4 +7,3 @@
     <title>To-Do</title>
 </head>
 <body>
-    <h2>TO-DO List</h2>
