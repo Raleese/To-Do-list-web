@@ -7,13 +7,14 @@
     $db = new Database($config['database']);
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Delete item if delete_id is set
-        if (!empty($_POST['delete_id'])) {
-            $db->query('DELETE FROM item WHERE id = :id', ['id' => $_POST['delete_id']]);
-        }
         // Add new item
-        elseif (!empty($_POST['text'])) {
-            $db->query('INSERT INTO item (text) VALUES (:text)', ['text' => $_POST['text']]);
+        if (!empty($_POST['text'])) {
+            if (trim($_POST['text']) != '')
+                $db->query('INSERT INTO item (text) VALUES (:text)', ['text' => $_POST['text']]);
+        }
+        // Delete item if delete_id is set
+        elseif (!empty($_POST['delete_id'])) {
+            $db->query('DELETE FROM item WHERE id = :id', ['id' => $_POST['delete_id']]);
         }
         // Mark item as complete
         elseif (!empty($_POST['completed_id'])){
@@ -31,15 +32,16 @@
 
 <?php
 
-    foreach ($items as $item){
-        $task = $item['text'];
-        $id = $item['id'];
-        $completed = $item['completed'];
-        require 'elements/to_do_box.php';
-        if ($completed === 1){
-            echo "<script>crossText($id);</script>";
+    echo '<div class="todo-list">';
+        foreach ($items as $item){
+            $task = $item['text'];
+            $id = $item['id'];
+            $completed = $item['completed'];
+            require 'elements/to_do_box.php';
+            if ($completed === 1){
+                echo "<script>crossText($id);</script>";
+            }
         }
-    }
-
+    echo '</div>';
     require 'elements/tail.html.php';
 ?>
