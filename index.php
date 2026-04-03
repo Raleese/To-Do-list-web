@@ -1,9 +1,9 @@
 <?php
-    require 'elements/head.html.php'; 
-    require 'elements/input.php';
-    require 'db.php';
+    require __DIR__ . '/elements/head.html.php'; 
+    require __DIR__ . '/elements/input.php';
+    require __DIR__ . '/db.php';
 
-    $config = require 'config.php';
+    $config = require __DIR__ . '/config.php';
     $db = new Database($config['database']);
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -37,11 +37,11 @@
             $task = $item['text'];
             $id = $item['id'];
             $completed = $item['completed'];
-            require 'elements/to_do_box.php';
+            require __DIR__ . '/elements/to_do_box.php';
             if ($completed === 1){
                 echo "<script>crossText($id);</script>";
             }
         }
     echo '</div>';
-    require 'elements/tail.html.php';
+    require __DIR__ . '/elements/tail.html.php';
 ?>
