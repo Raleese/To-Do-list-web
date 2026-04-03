@@ -2,6 +2,12 @@
 
 A simple to-do list web app built with PHP, JavaScript, CSS, and MySQL. You can add tasks, mark them as complete, and delete them from the list.
 
+# Screenshots
+
+<img width="2880" height="1274" alt="image" src="https://github.com/user-attachments/assets/15ee03b3-ec1f-4bba-8727-b8200d35d736" />
+
+<img width="2879" height="1276" alt="image" src="https://github.com/user-attachments/assets/04ad28af-02b9-44be-8915-7017a70d48c0" />
+
 ## Features
 
 - Add a new to-do item
